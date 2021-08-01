@@ -1,0 +1,28 @@
+.feed-panel {
+    margin-left: calc(10% + 50px + 10%);
+    width: 50%;
+    //height: calc(100% - 50px);
+    height: 100%;
+    position: absolute;
+    //background-color: yellowgreen;
+}
+.add-post-panel {
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    margin-top: 2%;
+    border-width: 5px;
+    border-color: #e7e8ec;
+    //border-color: black;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+}
+.add-post-button {
+    background-color: #ff9d40;
+    //height: 70%;
+
+    margin-left: 80%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

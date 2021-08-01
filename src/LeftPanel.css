@@ -1,0 +1,24 @@
+.left-panel {
+    margin-left: 0;
+    width: calc(10% + 50px + 10%);
+    height: 100%;
+    position: absolute;
+    align-content: center;
+}
+.button-section {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 7% 25% 0 25%;
+}
+.section-btn {
+    margin-bottom: 4%;
+    height: 40px;
+    background-color: white;
+    border-color: #e7e8ec;
+    border-radius: 3px;
+}
+.home-button {
+    font-size: 14px;
+}
+
