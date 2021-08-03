@@ -1,0 +1,9 @@
+.logo {
+    font-family: Impact, serif;
+    font-size: 25px;
+    color: white;
+    margin-left: 10%;
+    padding: 1px 2px;
+    background-color: #ff9d40;
+    border-radius: 3px;
+}

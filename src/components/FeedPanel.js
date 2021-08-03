@@ -1,4 +1,4 @@
-import './FeedPanel.css';
+import './styles/FeedPanel.css';
 import React from "react";
 import {Button} from 'antd';
 import Post from "./Post";
