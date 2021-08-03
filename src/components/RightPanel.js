@@ -1,4 +1,4 @@
-import '../styles/RightPanel.css';
+import './styles/RightPanel.css';
 import React from "react";
 
 class RightPanel extends React.Component {

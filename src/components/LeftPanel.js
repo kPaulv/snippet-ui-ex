@@ -1,4 +1,4 @@
-import '../styles/LeftPanel.css';
+import './styles/LeftPanel.css';
 import React from "react";
 import { Button } from 'antd';
 

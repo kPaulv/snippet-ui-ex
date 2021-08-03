@@ -1,4 +1,4 @@
-import '../styles/Post.css';
+import './styles/Post.css';
 import React from "react";
 import {Col, Container, Media, Row} from "react-bootstrap";
 

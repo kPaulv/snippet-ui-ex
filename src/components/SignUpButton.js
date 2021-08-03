@@ -1,6 +1,6 @@
 import React from "react";
 import {Button} from "antd";
-import "../styles/SignUpButton.css";
+import "./styles/SignUpButton.css";
 
 class SignUpButton extends React.Component {
     render() {

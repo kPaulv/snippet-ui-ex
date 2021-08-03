@@ -1,4 +1,4 @@
-import '../styles/App.css';
+import './styles/App.css';
 import React from 'react';
 import Header from "./Header";
 import LeftPanel from "./LeftPanel";
