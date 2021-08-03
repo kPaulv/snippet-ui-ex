@@ -6,11 +6,10 @@ class RightPanel extends React.Component {
         return (
             <div className="right-panel">
                 <div className="select-section">
-                    <h3 style={{marginTop: '7%'}}>Filter</h3>
+                    <h3 style={{marginTop: '7%'}}>Sort</h3>
                     <select name="filter" className="filter">
                         <option value="date">Date</option>
-                        <option value="username">Author</option>
-                        <option value="tags">Tags</option>
+                        <option value="username">Popularity</option>
                     </select>
                 </div>
 
