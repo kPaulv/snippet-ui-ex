@@ -1,6 +1,5 @@
 import './styles/FeedPanel.css';
 import React from "react";
-import {Button} from 'antd';
 import Post from "./Post";
 
 class FeedPanel extends React.Component {
@@ -13,9 +12,9 @@ class FeedPanel extends React.Component {
                         marginTop: '10px',
                         marginLeft: '2%',
                     }}>Main</h3>
-                    <Button type="primary" className="add-post-button">
+                    <button type="button" className="btn btn-primary add-post-btn">
                         Add post
-                    </Button>
+                    </button>
                 </div>
 
                 <Post/>
