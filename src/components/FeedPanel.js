@@ -12,7 +12,7 @@ class FeedPanel extends React.Component {
                         marginTop: '10px',
                         marginLeft: '2%',
                     }}>Main</h3>
-                    <button type="button" className="btn btn-primary add-post-btn">
+                    <button type="button" className="btn btn-light add-post-btn">
                         Add post
                     </button>
                 </div>
