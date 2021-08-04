@@ -1,14 +1,14 @@
 import './styles/Post.css';
 import React from "react";
-import {Col, Container, Media, Row} from "react-bootstrap";
+import "react-bootstrap";
 
 class Post extends React.Component {
     render() {
         return (
-            <Container className="post-container">
-                <Row>
-                    <Col md="9">
-                        <Media>
+            <div className="post-container">
+                <div>
+                    <div>
+                        <div className="media">
                             <div className="post-header">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                                      className="bi bi-person-circle" viewBox="0 0 16 16">
@@ -30,8 +30,8 @@ class Post extends React.Component {
                                         d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
                                 </svg>
                             </div>
-                            <Media.Body>
-                                <h4>SNPT Post</h4>
+                            <div className="media-body">
+                                <h4 className="post-name">SNPT Post</h4>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                                     sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -45,7 +45,7 @@ class Post extends React.Component {
                                     print "Buzz"<br/>
                                     set print_number to false
                                 </div>
-                            </Media.Body>
+                            </div>
                             <div className="post-footer">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                      className="bi bi-suit-heart" viewBox="0 0 16 16">
@@ -54,10 +54,10 @@ class Post extends React.Component {
                                 </svg>
                                 <div className="language-tag">C++</div>
                             </div>
-                        </Media>
-                    </Col>
-                </Row>
-            </Container>
+                        </div>
+                    </div>
+                </div>
+            </div>
         );
     }
 }

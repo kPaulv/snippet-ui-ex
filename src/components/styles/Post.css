@@ -6,12 +6,20 @@
     border-width: 5px;
     padding: 2% 2%;
 }
+.media {
+    display: flex;
+    flex-direction: column;
+}
 .post-header {
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 .post-info {
     margin-left: 2%;
+}
+.post-name {
+    margin-top: 2%;
 }
 .post-author {
     height: 20px;
@@ -34,7 +42,7 @@
     margin-left: 80%;
 }
 .code-snippet {
-    margin-left: 3%;
+    margin-left: 4%;
     width: 90%;
     background-color: #f6f6f6;
     font-family: Consolas, serif;
