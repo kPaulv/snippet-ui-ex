@@ -1,5 +1,5 @@
 import React from "react";
-import {Button} from "antd";
+import {Button} from "react-bootstrap";
 import "./styles/SignUpButton.css";
 
 class SignUpButton extends React.Component {
