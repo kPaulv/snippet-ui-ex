@@ -1,0 +1,19 @@
+.popular-languages {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20%;
+    margin-top: 5%;
+}
+.popular-language-block {
+    background-color: #BDEBF3;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    border-width: 1px;
+    border-color: #e7e8ec;
+    border-radius: 5px;
+    padding: 1px 3px;
+    width: fit-content;
+}
+.popular-language {
+    color: #127486;
+}
