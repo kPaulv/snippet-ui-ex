@@ -5,7 +5,7 @@ import "./styles/SignUpButton.css";
 class SignUpButton extends React.Component {
     render() {
         return (
-            <Button type="primary" className="sign-up-button">Sign up</Button>
+            <Button variant="light" className="sign-up-button">Sign up</Button>
         )
     }
 }

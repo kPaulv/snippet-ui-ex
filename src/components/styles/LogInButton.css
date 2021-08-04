@@ -1,6 +1,9 @@
 .log-in-button {
     margin-left: 5%;
-    height: 30px;
+    height: 40px;
     width: 5%;
     background-color: #ffc996;
+}
+.log-in-button:hover {
+    background-color: #bfa184;
 }
