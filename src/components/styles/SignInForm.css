@@ -12,7 +12,15 @@
 .sign-in-form-header {
     display: flex;
     flex-direction: row;
-    background-color: #BDEBF3;
+    background-color: #37b6ce;
+    border-radius: 3px;
+    border-width: 3px;
+}
+.form-name{
+    margin-left: 5%;
+    margin-top: 2%;
+    color: white;
+/*style={{marginLeft: '5%', marginTop: '2%'}}*/
 }
 .form-close-button {
     margin-left: 65%;

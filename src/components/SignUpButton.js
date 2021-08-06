@@ -21,7 +21,8 @@ class SignUpButton extends React.Component {
                 <Button variant="light" id="signUp" className="sign-up-button" onClick={this.togglePopUp}>
                     Sign up
                 </Button>
-                {this.state.seen ? <SignInForm toggle={this.togglePopUp} isVisible={true}/> : null}
+                {this.state.seen ? <SignInForm toggle={this.togglePopUp} isVisible={true}
+                                               formName={"Sign up"} form/> : null}
             </div>
         )
     }

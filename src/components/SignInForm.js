@@ -42,7 +42,7 @@ class SignInForm extends React.Component {
             </Modal>*/
             <form className="sign-in-form">
                 <div className="sign-in-form-header">
-                    <h4 style={{marginLeft: '5%', marginTop: '2%'}}>Sign in</h4>
+                    <h4 className="form-name">{this.props.formName}</h4>
                     <CloseButton className="form-close-button" onClick={this.handleClick}/>
                 </div>
 
@@ -50,7 +50,7 @@ class SignInForm extends React.Component {
                        placeholder="Username" required autoFocus/>
                 <input type="password" id="inputPassword" className="form-control"
                        placeholder="Password" required />
-                <button className="btn btn-primary form-control" type="button">
+                <button className="btn btn-primary form-control" type="button" onClick={this.handleClick}>
                     Submit
                 </button>
             </form>
