@@ -1,41 +1,48 @@
 import React from "react";
 import "./styles/SignInForm.css";
 import "react-bootstrap";
+//import { Modal } from 'antd';
 import {CloseButton} from "react-bootstrap";
 
 class SignInForm extends React.Component {
+    state = {
+        isModalVisible: this.props.isVisible
+    };
+
     handleClick = () => {
         this.props.toggle();
     }
 
+    showModal = () => {
+        this.setState({
+            isModalVisible: !this.state.isModalVisible
+        });
+    };
+
+    handleOk = () => {
+        this.setState({
+            isModalVisible: !this.state.isModalVisible
+        });
+    };
+
+    handleCancel = () => {
+        this.setState({
+            isModalVisible: !this.state.isModalVisible
+        });
+    };
+
     render() {
         return (
-            /*<div className="modal" /!*style={{display: 'block'}}*!/>
-                <div className="modal_content">
-                    <span className="close" onClick={this.handleClick}>
-                        &times;
-                    </span>
-                    <form>
-                        <h3>Register!</h3>
-                        <label>
-                            Name:
-                            <input type="text" name="name"/>
-                        </label>
-                        <br/>
-                        <input type="submit"/>
-                    </form>
-                </div>
-            </div>*/
+            /*<Modal title="Sign up" visible={this.state.isModalVisible} onOk={this.handleOk}
+                   onCancel={this.handleCancel}>
+                <input type="text" id="inputUsername" className="form-control"
+                       placeholder="Username" required autoFocus/>
+                <input type="password" id="inputPassword" className="form-control"
+                       placeholder="Password" required />
+            </Modal>*/
             <form className="sign-in-form">
                 <div className="sign-in-form-header">
                     <h4 style={{marginLeft: '5%', marginTop: '2%'}}>Sign in</h4>
-                    {/*<span className="close" onClick={this.handleClick}>
-                        &times;
-                    </span>*/}
-                    {/*<button type="button" className="btn-close form-close" aria-label="Close"
-                        onClick={this.handleClick}>
-                        x
-                    </button>*/}
                     <CloseButton className="form-close-button" onClick={this.handleClick}/>
                 </div>
 

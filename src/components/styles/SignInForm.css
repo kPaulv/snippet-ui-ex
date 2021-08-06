@@ -1,5 +1,4 @@
 .sign-in-form {
-    //display: none;
     position: fixed;
     z-index: 1;
     border-color: grey;
@@ -15,9 +14,6 @@
     flex-direction: row;
     background-color: #BDEBF3;
 }
-/*.close {
-    margin-left: 10%;
-}*/
 .form-close-button {
     margin-left: 65%;
     width: 7%;
@@ -28,13 +24,6 @@
 .form-close-button:hover {
     color: #ff9d40;
 }
-/*.form-close {
-    margin-left: 50%;
-    width: 7%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    align-content: center;
-}*/
 .form-control {
     margin: 5% 5%;
     width: 90%;
@@ -43,42 +32,3 @@
     margin: 5% 5%;
     width: 80%;
 }
-/*
-btn-lg btn-block
-*/
-
-/*.modal {
-    position: fixed;
-    z-index: 1;
-    width: 20%;
-    height: 20%;
-    background-color: rgba(0, 0, 0, 0.25);
-}
-.modal-2 {
-    position: fixed;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.25);
-}
-.modal_content {
-    background-color: white;
-    position: absolute;
-    top: 20%;
-    left: 30%;
-    width: 40%;
-    padding: 20px;
-    border-radius: 5px;
-    border: 2px solid black;
-}
-
-.close {
-    margin-left: 50%;
-    color: Black;
-    float: right;
-}
-
-.close:hover {
-    color: #ff9d40;
-    cursor: pointer;
-}*/

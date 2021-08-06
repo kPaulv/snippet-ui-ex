@@ -9,7 +9,7 @@ class SignUpButton extends React.Component {
     };
 
     togglePopUp = () => {
-        /*alert("togglePopUp");*/
+        //debugger;
         this.setState({
             seen: !this.state.seen
         });
@@ -17,11 +17,11 @@ class SignUpButton extends React.Component {
 
     render() {
         return (
-            <div className="sign-up-button-block" onClick={this.togglePopUp}>
-                <Button variant="light" id="signUp" className="sign-up-button">
+            <div className="sign-up-button-block">
+                <Button variant="light" id="signUp" className="sign-up-button" onClick={this.togglePopUp}>
                     Sign up
                 </Button>
-                {this.state.seen ? <SignInForm toggle={this.togglePopUp}/> : null}
+                {this.state.seen ? <SignInForm toggle={this.togglePopUp} isVisible={true}/> : null}
             </div>
         )
     }
