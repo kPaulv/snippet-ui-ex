@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import './components/styles/Header.css';
 import App from "./components/App";
 import NotFound from "./components/NotFound";
-import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 /*const Router = ReactRouterDOM.BrowserRouter;
 const Route = ReactRouterDOM.Route;
@@ -15,9 +15,8 @@ ReactDOM.render(
     <React.StrictMode>
         <Router>
             <Switch>
-                <Route path='/feed' component={App} />
+                <Route path='/' component={App} />
                 <Route component={NotFound} />
-                <Redirect from='/' to='/feed'/>
             </Switch>
         </Router>
         {/*<App />*/}
