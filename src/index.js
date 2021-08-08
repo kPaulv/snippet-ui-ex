@@ -5,17 +5,19 @@ import reportWebVitals from './reportWebVitals';
 import './components/styles/Header.css';
 import App from "./components/App";
 import NotFound from "./components/NotFound";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {Router} from "react-router-dom";
+import {createBrowserHistory} from 'history';
+import {Switch, Route} from "react-router";
+import CreatePostPage from "./components/CreatePostPage";
 
-/*const Router = ReactRouterDOM.BrowserRouter;
-const Route = ReactRouterDOM.Route;
-const Switch = ReactRouterDOM.Switch;*/
+const history = createBrowserHistory();
 
 ReactDOM.render(
     <React.StrictMode>
-        <Router>
+        <Router history={history}>
             <Switch>
-                <Route path='/' component={App} />
+                <Route exact path='/' component={App} />
+                <Route path="/create" component={CreatePostPage} />
                 <Route component={NotFound} />
             </Switch>
         </Router>
