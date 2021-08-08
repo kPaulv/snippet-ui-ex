@@ -13,7 +13,7 @@ class SignInForm extends React.Component {
         this.props.toggle();
     }
 
-    showModal = () => {
+    /*showModal = () => {
         this.setState({
             isModalVisible: !this.state.isModalVisible
         });
@@ -29,7 +29,7 @@ class SignInForm extends React.Component {
         this.setState({
             isModalVisible: !this.state.isModalVisible
         });
-    };
+    };*/
 
     render() {
         return (
