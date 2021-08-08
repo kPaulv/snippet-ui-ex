@@ -4,10 +4,21 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import './components/styles/Header.css';
 import App from "./components/App";
+import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+
+/*const Router = ReactRouterDOM.BrowserRouter;
+const Route = ReactRouterDOM.Route;
+const Switch = ReactRouterDOM.Switch;*/
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <Router>
+            <Switch>
+                <Route path='/feed' component={App} />
+                <Redirect from='/' to='/feed'/>
+            </Switch>
+        </Router>
+        {/*<App />*/}
     </React.StrictMode>,
     document.getElementById('root')
 );
