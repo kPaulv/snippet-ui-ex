@@ -16,7 +16,7 @@ ReactDOM.render(
     <React.StrictMode>
         <Router history={history}>
             <Switch>
-                <Route exact path='/' component={App} />
+                <Route exact path="/" component={App} />
                 <Route path="/create" component={CreatePostPage} />
                 <Route component={NotFound} />
             </Switch>

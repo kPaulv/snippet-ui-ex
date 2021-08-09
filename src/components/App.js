@@ -6,15 +6,14 @@ import FeedPanel from "./FeedPanel";
 import RightPanel from "./RightPanel";
 
 function App() {
-    return (
-        <React.StrictMode>
+    return (<React.Fragment>
             <Header/>
             <div className="PanelSpace">
                 <LeftPanel/>
                 <FeedPanel/>
                 <RightPanel/>
             </div>
-        </React.StrictMode>
+        </React.Fragment>
     );
 }
 
