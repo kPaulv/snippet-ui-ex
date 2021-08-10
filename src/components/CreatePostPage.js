@@ -85,7 +85,11 @@ export default class CreatePostPage extends React.Component {
         console.log("show data");
         console.log(data);
 
-        axios.post("https://localhost:44384/Post", data)
+        const options = {
+            headers: {'Access-Control-Allow-Origin': '*'}
+        };
+
+        axios.post("https://localhost:44384/Post", data, options)
             .then(response => {
                 console.log(response)
             })
