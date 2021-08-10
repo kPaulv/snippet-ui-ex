@@ -2,27 +2,9 @@ import React from "react";
 import './styles/CreatePostPage.css';
 import 'antd/dist/antd.css';
 import {Form, Input, Button, Select} from 'antd';
+import axios from "axios";
+
 const {Option} = Select;
-//import 'bootstrap/dist/css/bootstrap.min.css';
-//const {  Form, Input, InputNumber, Button  } = antd;
-
-/*
-{
-
-  "userId": 1,
-  "tittle": "string",
-  "description": "string",
-  "languageId": 1,
-  "snippetCode": "string",
-  "tags": [
-    {
-
-      "name": "string"
-    }
-  ]
-}
-
-*/
 
 const layout = {
     labelCol: {
@@ -55,8 +37,8 @@ export default class CreatePostPage extends React.Component {
         this.state = {
             tittle: '',
             description: '',
+            languageId: 0,
             snippetCode: '',
-            language: '',
             tags: []
         }
     }
@@ -68,19 +50,19 @@ export default class CreatePostPage extends React.Component {
     selectChangeHandler =(value) => {
         switch (value) {
             case 'C++':
-                this.setState({language: 'C++'})
+                this.setState({languageId: 1})
                 return;
 
             case 'Java':
-                this.setState({language: 'Java'})
+                this.setState({languageId: 2})
                 return;
 
             case 'Python':
-                this.setState({language: 'Python'})
+                this.setState({languageId: 3})
                 return;
 
             case 'JavaScript':
-                this.setState({language: 'JavaScript'})
+                this.setState({languageId: 4})
                 return;
 
             case 'other':
@@ -90,40 +72,33 @@ export default class CreatePostPage extends React.Component {
 
     submitHandler = (event) => {
         event.preventDefault();
+
         console.log(this.state);
         const data = {
-            userId: 4,
             tittle: this.state.tittle,
             description: this.state.description,
-            languageId: 1,
+            languageId: this.state.languageId,
             snippetCode: this.state.snippetCode,
-            tags: [
-                {
-                    name: "str3"
-                }
-            ]
+            tags: this.state.tags
         };
 
         console.log("show data");
         console.log(data);
-        const requestOptions = {
+
+        axios.post("https://localhost:44384/Post", data)
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+        /*const requestOptions = {
             method: 'POST',
             headers: {
                 'Accept': 'text/plain',
                 'Content-Type': 'application/json'
             },
-            /*mode: 'no-cors',*/
-            /*body: JSON.stringify({
-                "tittle": "string",
-                "description": "string",
-                "languageId": 1,
-                "snippetCode": "string",
-                "tags": [
-                    {
-                        "name": "string"
-                    }
-                ]
-            })*/
             body: JSON.stringify(data)
         };
         fetch("https://localhost:44384/Post", requestOptions)
@@ -132,7 +107,7 @@ export default class CreatePostPage extends React.Component {
             })
             .catch(error => {
                 console.log(error)
-            })
+            })*/
     }
 
     render() {
