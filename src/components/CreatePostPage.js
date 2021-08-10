@@ -3,6 +3,7 @@ import './styles/CreatePostPage.css';
 import 'antd/dist/antd.css';
 import {Form, Input, Button, Select} from 'antd';
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 const {Option} = Select;
 
@@ -168,6 +169,9 @@ export default class CreatePostPage extends React.Component {
                         <Button type="primary" htmlType="submit">
                             Submit
                         </Button>
+                        <Link type="primary" className="go-back-link" to='/'>
+                            Go back
+                        </Link>
                     </Form.Item>
                 </Form>
             </div>
