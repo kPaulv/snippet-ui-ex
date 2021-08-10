@@ -96,22 +96,6 @@ export default class CreatePostPage extends React.Component {
             .catch(error => {
                 console.log(error)
             })
-
-        /*const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Accept': 'text/plain',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        };
-        fetch("https://localhost:44384/Post", requestOptions)
-            .then(response => {
-                console.log(response)
-            })
-            .catch(error => {
-                console.log(error)
-            })*/
     }
 
     render() {
