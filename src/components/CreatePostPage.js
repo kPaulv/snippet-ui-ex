@@ -1,11 +1,10 @@
 import React from "react";
 import './styles/CreatePostPage.css';
 import 'antd/dist/antd.css';
-import {Form, Input, Button, Select} from 'antd';
+import {Form, Input, Button} from 'antd';
 import axios from "axios";
 import {Link} from "react-router-dom";
-
-const {Option} = Select;
+import SelectLanguageItem from "./SelectLanguageItem";
 
 const layout = {
     labelCol: {
@@ -48,7 +47,11 @@ export default class CreatePostPage extends React.Component {
         this.setState({[event.target.name]: event.target.value})
     }
 
-    selectChangeHandler =(value) => {
+    receiveLanguage = (id) => {
+        this.setState({languageId: id});
+    }
+
+    /*selectChangeHandler = (value) => {
         switch (value) {
             case 'C++':
                 this.setState({languageId: 1})
@@ -69,7 +72,7 @@ export default class CreatePostPage extends React.Component {
             case 'other':
                 return;
         }
-    }
+    }*/
 
     submitHandler = (event) => {
         event.preventDefault();
@@ -78,7 +81,7 @@ export default class CreatePostPage extends React.Component {
         const data = {
             tittle: this.state.tittle,
             description: this.state.description,
-            languageId: this.state.languageId,
+            languageId: parseInt(this.state.languageId),
             snippetCode: this.state.snippetCode,
             tags: this.state.tags
         };
@@ -100,7 +103,7 @@ export default class CreatePostPage extends React.Component {
     }
 
     render() {
-        const { tittle, description, snippetCode, language } = this.state
+        const {tittle, description, languageId, snippetCode, tags} = this.state
 
         return (
             <div className="create-post-form">
@@ -139,7 +142,7 @@ export default class CreatePostPage extends React.Component {
                                         onChange={this.changeHandler}/>
                     </Form.Item>
 
-                    <Form.Item
+                    {/*<Form.Item
                         name={"language"}
                         label="Language"
                         rules={[
@@ -147,8 +150,8 @@ export default class CreatePostPage extends React.Component {
                                 required: true,
                             },
                         ]}
-                    >
-                        <Select placeholder="Select language" type="text" onChange={this.selectChangeHandler}
+                    >*/}
+                        {/*<Select placeholder="Select language" type="text" onChange={this.selectChangeHandler}
                             name="language" value={language}>
                             <Option name="C++" value="C++">
                                 C++
@@ -162,8 +165,11 @@ export default class CreatePostPage extends React.Component {
                             <Option name="JavaScript" value="JavaScript">
                                 JavaScript
                             </Option>
-                        </Select>
-                    </Form.Item>
+                        </Select>*/}
+
+                        <SelectLanguageItem sendLanguage={this.receiveLanguage}/>
+
+                    {/*</Form.Item>*/}
 
                     <Form.Item wrapperCol={{...layout.wrapperCol, offset: 4}}>
                         <Button type="primary" htmlType="submit">
