@@ -1,5 +1,6 @@
 import React from "react";
 import {Form, Select} from "antd";
+import axios from "axios";
 
 const {Option} = Select;
 
@@ -10,42 +11,34 @@ class SelectLanguageItem extends React.Component {
         this.state = {
             languages: [],
             languageId: 0
+            //languageIdCount: 0
         }
     }
 
     componentDidMount() {
-
+        axios.get('https://localhost:44384/Language?count=2147483647')
+            .then(response => {
+                console.log(response);
+                this.setState({languages: response.data});
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     selectChangeHandler = (value) => {
-        //debugger;
         this.setState({languageId: value});
-        //console.log(value);
         this.props.sendLanguage(value);
-
-        /*switch (value) {
-            case 'C++':
-                this.setState({language: 1})
-                return;
-
-            case 'Java':
-                this.setState({languageId: 2})
-                return;
-
-            case 'Python':
-                this.setState({languageId: 3})
-                return;
-
-            case 'JavaScript':
-                this.setState({languageId: 4})
-                return;
-
-            case 'other':
-                return;
-        }*/
     }
 
+    /*incrementId = () => {
+        this.setState({languageIdCount: this.state.languageIdCount + 1});
+        return this.state.languageIdCount;
+    }*/
+
     render() {
+        const {languages} = this.state
+
         return (
             <Form.Item
                 name={"language"}
@@ -58,7 +51,14 @@ class SelectLanguageItem extends React.Component {
             >
                 <Select placeholder="Select language" type="text" onChange={this.selectChangeHandler}
                         name="language" /*value={language}*/ /*value={languageId}*/>
-                    <Option name="C++" value="1">
+
+                    {
+                        languages.length ?
+                            languages.map(language => <Option value={language.id}>{language.name}</Option>) :
+                            null
+                    }
+
+                    {/*<Option name="C++" value="1">
                         C++
                     </Option>
                     <Option name="Java" value="2">
@@ -69,7 +69,7 @@ class SelectLanguageItem extends React.Component {
                     </Option>
                     <Option name="JavaScript" value="4">
                         JavaScript
-                    </Option>
+                    </Option>*/}
                 </Select>
             </Form.Item>
         );
