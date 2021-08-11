@@ -103,7 +103,7 @@ export default class CreatePostPage extends React.Component {
     }
 
     render() {
-        const {tittle, description, languageId, snippetCode, tags} = this.state
+        const {tittle, description, snippetCode} = this.state
 
         return (
             <div className="create-post-form">
