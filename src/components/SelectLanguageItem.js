@@ -51,10 +51,11 @@ class SelectLanguageItem extends React.Component {
             >
                 <Select placeholder="Select language" type="text" onChange={this.selectChangeHandler}
                         name="language" /*value={language}*/ /*value={languageId}*/>
-
                     {
                         languages.length ?
-                            languages.map(language => <Option value={language.id}>{language.name}</Option>) :
+                            languages.map(language => <Option key={language.id} value={language.id}>
+                                {language.name}
+                            </Option>) :
                             null
                     }
 
