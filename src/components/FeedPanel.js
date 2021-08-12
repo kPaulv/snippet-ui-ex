@@ -60,27 +60,35 @@ class FeedPanel extends React.Component {
                 console.log(error)
             })
 
-         axios.get('https://localhost:44384/Post/Count')
-              .then(response => {
-                  console.log(response);
-                  this.setState({totalPosts: response.data});
-              })
+        axios.get('https://localhost:44384/Post/Count')
+            .then(response => {
+                console.log(response);
+                this.setState({totalPosts: response.data});
+            })
 
-         /*axios.get('https://jsonplaceholder.typicode.com/posts')
-             .then(response => {
-                 console.log(response)
-                 this.setState({posts: response.data})
-             })
-             .catch(error => {
-                 console.log(error)
-             })*/
+        /*axios.get('https://jsonplaceholder.typicode.com/posts')
+            .then(response => {
+                console.log(response)
+                this.setState({posts: response.data})
+            })
+            .catch(error => {
+                console.log(error)
+            })*/
     }
 
     onPageChanged = (data) => {
         const {currentPage, totalPages, pageLimit} = data;
         const offset = (currentPage - 1) * pageLimit;
+        let url;
 
-        axios.get(`https://localhost:44384/Post?Count=${pageLimit}&Skip=${offset}`)
+        console.log("search req check: " + this.props.searchTerm);
+        if (this.props.searchTerm !== "" && this.props.searchTerm !== null && this.props.searchTerm !== undefined) {
+            url = `https://localhost:44384/Post?SearchingText=${this.props.searchTerm}&Count=${pageLimit}&Skip=${offset}`;
+        } else {
+            url = `https://localhost:44384/Post?Count=${pageLimit}&Skip=${offset}`;
+        }
+
+        axios.get(url)
             .then(response => {
                 const currentPosts = response.data;
                 this.setState({currentPage, currentPosts, totalPages});
@@ -110,13 +118,13 @@ class FeedPanel extends React.Component {
                     posts.length ? posts.map(post => <Post title="{post.tittle}" />) : null :
                         null*/
                     currentPosts.length ?
-                        currentPosts.filter((value) => {
+                        currentPosts/*.filter((value) => {
                             if(this.props.searchTerm === '') {
                                 return value;
                             } else if (value.tittle.toLowerCase().includes(this.props.searchTerm.toLowerCase())) {
                                 return value;
                             }
-                        }).map(post => <Post
+                        })*/.map(post => <Post
                             key={post.id}
                             name={post.tittle}
                             text={post.description}
