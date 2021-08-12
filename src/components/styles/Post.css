@@ -30,8 +30,11 @@
     font-size: 12px;
     color: darkgray;
 }
-.bi-three-dots {
+/*.bi-three-dots {
     margin-left: 80%;
+}*/
+.options {
+    margin-left: 74%;
 }
 .code-snippet {
     margin-left: 3%;

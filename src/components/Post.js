@@ -1,6 +1,8 @@
 import './styles/Post.css';
 import React from "react";
-//import {Col, Container, Media, Row} from "react-bootstrap";
+import { Menu, Dropdown } from 'antd';
+
+
 
 class Post extends React.Component {
     constructor(props) {
@@ -16,6 +18,17 @@ class Post extends React.Component {
         }
         return text;
     }
+
+    handleMenuClick = (event) => {
+        console.log('click', event);
+    }
+
+    menu = (
+        <Menu onClick={this.handleMenuClick}>
+            <Menu.Item key="1">Update</Menu.Item>
+            <Menu.Item key="2">Delete</Menu.Item>
+        </Menu>
+    );
 
     render() {
         return (
@@ -39,11 +52,12 @@ class Post extends React.Component {
                                         30.07.2021
                                     </p>
                                 </div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                <Dropdown.Button overlay={this.menu} className="options"/>
+                                {/*<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                      className="bi bi-three-dots" viewBox="0 0 16 16">
                                     <path
                                         d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                                </svg>
+                                </svg>*/}
                             </div>
                             <div className="media-body">
                                 <h4 style={{marginTop: '1%'}}>{this.props.name}{/*SNPT Post*/}</h4>
