@@ -1,5 +1,6 @@
 import React from "react";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import './styles/Pagination.css';
 
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';
@@ -86,7 +87,7 @@ class Pagination extends React.Component {
 
         return (
             <React.Fragment>
-                <nav aria-label="Posts Pagination">
+                <nav className="pagination-item" aria-label="Posts Pagination">
                     <ul className="pagination">
                         { pages.map((page, index) => {
 
