@@ -2,18 +2,21 @@ import './styles/FeedPanel.css';
 import React from "react";
 import AddPostPanel from "./AddPostPanel";
 import Post from "./Post";
+import Pagination from "./Pagination";
 import axios from "axios";
 
 class FeedPanel extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
+        /*this.state = {
             posts: [],
             skip: 0,
             count: 10
-        }
+        }*/
     }
+
+    state = {totalPosts: null, currentPosts: [], currentPage: null, totalPages: null};
 
     /*
     {
@@ -37,22 +40,31 @@ class FeedPanel extends React.Component {
      */
 
      componentDidMount() {
-        axios.get(`https://localhost:44384/Post?Count=${this.state.count}&Skip=${this.state.skip}`)
+        const defSkip = 0;
+        const defCount = 10;
+        axios.get(`https://localhost:44384/Post?Count=${defCount/*this.state.count*/}&Skip=${defSkip/*this.state.skip*/}`)
             .then(response => {
                 console.log(response)
                 this.setState({
-                    posts: response.data,
+                    /*posts: response.data,
                     skip: this.state.skip + 10,
-                    count: 10
+                    count: 10*/
+                    currentPosts: response.data
                 })
 
                 console.log("setState check");
-                console.log(this.state.posts);
-                console.log(this.state.posts[0].id);
+                console.log(this.state.currentPosts);
+                console.log(this.state.currentPosts[0].id);
             })
             .catch(error => {
                 console.log(error)
             })
+
+         axios.get('https://localhost:44384/Post/Count')
+              .then(response => {
+                  console.log(response);
+                  this.setState({totalPosts: response.data});
+              })
 
          /*axios.get('https://jsonplaceholder.typicode.com/posts')
              .then(response => {
@@ -64,9 +76,26 @@ class FeedPanel extends React.Component {
              })*/
     }
 
+    onPageChanged = (data) => {
+         const { currentPage, totalPages, pageLimit } = data;
+         const offset = (currentPage - 1) * pageLimit;
+
+         axios.get(`https://localhost:44384/Post?Count=${pageLimit}&Skip=${offset}`)
+             .then(response => {
+                 const currentPosts = response.data;
+                 this.setState({currentPage, currentPosts, totalPages});
+             })
+             .catch(error => {
+                 console.log(error)
+             });
+        /*const currentPosts = allCountries.slice(offset, offset + pageLimit);
+
+        this.setState({ currentPage, currentCountries, totalPages });*/
+    }
+
     render() {
         //const { posts } = this.state.posts;
-        const {posts, skip, count} = this.state
+        const {totalPosts, currentPosts, currentPage, totalPages} = this.state
 
         return (
             <div className="feed-panel">
@@ -80,8 +109,8 @@ class FeedPanel extends React.Component {
                     /*posts ?
                     posts.length ? posts.map(post => <Post title="{post.tittle}" />) : null :
                         null*/
-                    posts.length ?
-                        posts.map(post => <Post
+                    currentPosts.length ?
+                        currentPosts.map(post => <Post
                             key={post.id}
                             name={post.tittle}
                             text={post.description}
@@ -91,6 +120,11 @@ class FeedPanel extends React.Component {
                             />/*<div key={post.id}>{post.tittle}</div>*/) :
                         null
                 }
+
+                {/*<div className="pagination-panel">*/}
+                    <Pagination totalRecords={totalPosts} pageLimit={10} pageNeighbours={1}
+                                onPageChanged={this.onPageChanged} />
+                {/*</div>*/}
 
                 {/*<Post />*/}
 

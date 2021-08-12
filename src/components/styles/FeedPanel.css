@@ -6,3 +6,12 @@
     position: absolute;
     //background-color: yellowgreen;
 }
+.pagination-panel {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    height: 50px;
+    background-color: white;
+    border-color: #e7e8ec;
+    border-radius: 3px;
+    border-width: 1px;
+}
