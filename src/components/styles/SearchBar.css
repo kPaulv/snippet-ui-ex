@@ -1,5 +1,10 @@
 .search-bar {
+    //margin-left: 10%;
+    width: 100%;
+    height: 25px;
+}
+.search-bar-form {
     margin-left: 10%;
     width: calc(50% - 16px);
-    height: 25px;
+
 }
