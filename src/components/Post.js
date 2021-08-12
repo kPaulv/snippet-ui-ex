@@ -2,8 +2,9 @@ import './styles/Post.css';
 import React from "react";
 import { Menu, Dropdown } from 'antd';
 import axios from "axios";
+//import {createBrowserHistory} from 'history';
 
-
+//const history = createBrowserHistory();
 
 class Post extends React.Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class Post extends React.Component {
         console.log('click', event);
         switch(event.key) {
             case '1':
-
+                //history.push("/update");
                 break;
             case '2':
                 axios.delete(`https://localhost:44384/Post/${this.props.postId}`)

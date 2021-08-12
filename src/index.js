@@ -18,6 +18,7 @@ ReactDOM.render(
             <Switch>
                 <Route exact path="/" component={App} />
                 <Route path="/create" component={CreatePostPage} />
+                <Route path="/update/id" component={CreatePostPage} />
                 <Route component={NotFound} />
             </Switch>
         </Router>
