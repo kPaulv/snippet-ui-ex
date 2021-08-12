@@ -6,15 +6,15 @@ import Pagination from "./Pagination";
 import axios from "axios";
 
 class FeedPanel extends React.Component {
-    constructor(props) {
+    /*constructor(props) {
         super(props);
 
-        /*this.state = {
+        /!*this.state = {
             posts: [],
             skip: 0,
             count: 10
-        }*/
-    }
+        }*!/
+    }*/
 
     state = {totalPosts: null, currentPosts: [], currentPage: null, totalPages: null};
 
@@ -39,7 +39,7 @@ class FeedPanel extends React.Component {
   }
      */
 
-     componentDidMount() {
+    componentDidMount() {
         const defSkip = 0;
         const defCount = 10;
         axios.get(`https://localhost:44384/Post?Count=${defCount/*this.state.count*/}&Skip=${defSkip/*this.state.skip*/}`)
@@ -77,17 +77,17 @@ class FeedPanel extends React.Component {
     }
 
     onPageChanged = (data) => {
-         const { currentPage, totalPages, pageLimit } = data;
-         const offset = (currentPage - 1) * pageLimit;
+        const {currentPage, totalPages, pageLimit} = data;
+        const offset = (currentPage - 1) * pageLimit;
 
-         axios.get(`https://localhost:44384/Post?Count=${pageLimit}&Skip=${offset}`)
-             .then(response => {
-                 const currentPosts = response.data;
-                 this.setState({currentPage, currentPosts, totalPages});
-             })
-             .catch(error => {
-                 console.log(error)
-             });
+        axios.get(`https://localhost:44384/Post?Count=${pageLimit}&Skip=${offset}`)
+            .then(response => {
+                const currentPosts = response.data;
+                this.setState({currentPage, currentPosts, totalPages});
+            })
+            .catch(error => {
+                console.log(error)
+            });
         /*const currentPosts = allCountries.slice(offset, offset + pageLimit);
 
         this.setState({ currentPage, currentCountries, totalPages });*/
@@ -95,7 +95,7 @@ class FeedPanel extends React.Component {
 
     render() {
         //const { posts } = this.state.posts;
-        const {totalPosts, currentPosts, currentPage, totalPages} = this.state
+        const {totalPosts, currentPosts} = this.state
 
         return (
             <div className="feed-panel">
@@ -117,14 +117,18 @@ class FeedPanel extends React.Component {
                             tags={post.tags}
                             code={post.snippetCode}
                             language={post.language.name}
-                            />/*<div key={post.id}>{post.tittle}</div>*/) :
+                        />/*<div key={post.id}>{post.tittle}</div>*/) :
                         null
                 }
 
-                {/*<div className="pagination-panel">*/}
-                    <Pagination totalRecords={totalPosts} pageLimit={10} pageNeighbours={1}
-                                onPageChanged={this.onPageChanged} />
-                {/*</div>*/}
+                {
+                    totalPosts ?
+                        <div className="pagination-panel">
+                            <Pagination totalRecords={totalPosts} pageLimit={10} pageNeighbours={1}
+                                        onPageChanged={this.onPageChanged}/>
+                        </div> : null
+                }
+
 
                 {/*<Post />*/}
 
