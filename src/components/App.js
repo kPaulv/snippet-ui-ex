@@ -1,16 +1,22 @@
 import './styles/App.css';
-import React from 'react';
+import React, {useState} from 'react';
 import Header from "./Header";
 import LeftPanel from "./LeftPanel";
 import FeedPanel from "./FeedPanel";
 import RightPanel from "./RightPanel";
 
 function App() {
+    const[searchTerm, setSearchTerm] = useState('');
+
+    function receiveSearchTerm(value) {
+        setSearchTerm(value);
+    }
+
     return (<React.Fragment>
-            <Header/>
+            <Header sendSearchTerm={receiveSearchTerm}/>
             <div className="PanelSpace">
                 <LeftPanel/>
-                <FeedPanel/>
+                <FeedPanel searchTerm={searchTerm}/>
                 <RightPanel/>
             </div>
         </React.Fragment>

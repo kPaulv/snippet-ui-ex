@@ -110,7 +110,13 @@ class FeedPanel extends React.Component {
                     posts.length ? posts.map(post => <Post title="{post.tittle}" />) : null :
                         null*/
                     currentPosts.length ?
-                        currentPosts.map(post => <Post
+                        currentPosts.filter((value) => {
+                            if(this.props.searchTerm === '') {
+                                return value;
+                            } else if (value.tittle.toLowerCase().includes(this.props.searchTerm.toLowerCase())) {
+                                return value;
+                            }
+                        }).map(post => <Post
                             key={post.id}
                             name={post.tittle}
                             text={post.description}
