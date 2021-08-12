@@ -11,7 +11,6 @@ class SelectLanguageItem extends React.Component {
         this.state = {
             languages: [],
             languageId: 0
-            //languageIdCount: 0
         }
     }
 
@@ -30,11 +29,6 @@ class SelectLanguageItem extends React.Component {
         this.setState({languageId: value});
         this.props.sendLanguage(value);
     }
-
-    /*incrementId = () => {
-        this.setState({languageIdCount: this.state.languageIdCount + 1});
-        return this.state.languageIdCount;
-    }*/
 
     render() {
         const {languages} = this.state
@@ -58,19 +52,6 @@ class SelectLanguageItem extends React.Component {
                             </Option>) :
                             null
                     }
-
-                    {/*<Option name="C++" value="1">
-                        C++
-                    </Option>
-                    <Option name="Java" value="2">
-                        Java
-                    </Option>
-                    <Option name="Python" value="3">
-                        Python
-                    </Option>
-                    <Option name="JavaScript" value="4">
-                        JavaScript
-                    </Option>*/}
                 </Select>
             </Form.Item>
         );
