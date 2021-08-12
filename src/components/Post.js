@@ -1,6 +1,7 @@
 import './styles/Post.css';
 import React from "react";
 import { Menu, Dropdown } from 'antd';
+import axios from "axios";
 
 
 
@@ -21,6 +22,22 @@ class Post extends React.Component {
 
     handleMenuClick = (event) => {
         console.log('click', event);
+        switch(event.key) {
+            case '1':
+
+                break;
+            case '2':
+                axios.delete(`https://localhost:44384/Post/${this.props.postId}`)
+                    .then(response => {
+                        console.log(response)
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+                break;
+            default:
+                return;
+        }
     }
 
     menu = (

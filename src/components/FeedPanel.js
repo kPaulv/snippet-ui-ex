@@ -229,6 +229,7 @@ class FeedPanel extends React.Component {
                             }
                         })*/.map(post => <Post
                             key={post.id}
+                            postId={post.id}
                             name={post.tittle}
                             text={post.description}
                             tags={post.tags}
