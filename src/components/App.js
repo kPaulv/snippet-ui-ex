@@ -7,16 +7,21 @@ import RightPanel from "./RightPanel";
 
 function App() {
     const[searchTerm, setSearchTerm] = useState('');
+    const[filterData, setFilterData] = useState({});
 
     function receiveSearchTerm(value) {
         setSearchTerm(value);
     }
 
+    function receiveFilterData(data) {
+        setFilterData(data);
+    }
+
     return (<React.Fragment>
             <Header sendSearchTerm={receiveSearchTerm}/>
             <div className="PanelSpace">
-                <LeftPanel/>
-                <FeedPanel searchTerm={searchTerm}/>
+                <LeftPanel sendFilterData={receiveFilterData}/>
+                <FeedPanel searchTerm={searchTerm} filterData={filterData}/>
                 <RightPanel/>
             </div>
         </React.Fragment>

@@ -52,7 +52,7 @@ class FeedPanel extends React.Component {
         }*/
 
         axios.get(`https://localhost:44384/Post?Count=${defCount/*this.state.count*/}&Skip=${defSkip/*this.state.skip*/}`)
-        //axios.get(url)
+            //axios.get(url)
             .then(response => {
                 console.log(response)
                 this.setState({
@@ -87,7 +87,7 @@ class FeedPanel extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevProps.searchTerm !== this.props.searchTerm) {
+        if (prevProps.searchTerm !== this.props.searchTerm) {
             let url;
 
             console.log("search req check: " + this.props.searchTerm);
@@ -104,6 +104,77 @@ class FeedPanel extends React.Component {
                 .catch(error => {
                     console.log(error)
                 });
+            /*} else if (prevProps.searchTerm === this.props.searchTerm && prevProps.filterData !== this.props.filterData) {
+                if (this.props.filterData !== [] && this.props.filterData !== null && this.props.filterData !== undefined) {
+                    //url = `https://localhost:44384/Post?`;
+                    debugger;
+                    url = `https://localhost:44384/Post?From=${(this.props.filterData.dates[0]).toISOString()}` +
+                        `&To=${(this.props.filterData.dates[1]).toISOString()}&Tags=`;
+                    if(this.props.filterData.tags.length > 0) {
+                        for (let i = 0; i < this.props.filterData.tags.length - 1; ++i) {
+                            url.concat(this.props.filterData.tags[i], '&Tags=')
+                        }
+                        url.concat(this.props.tags[this.props.filterData.tags.length - 1]);
+                    }
+                    url.concat('&Languages=');
+                    if(this.props.filterData.checkedLanguages.length > 0) {
+                        for (let i = 0; i < this.props.filterData.checkedLanguages.length - 1; ++i) {
+                            url.concat(this.props.filterData.checkedLanguages[i], '&Languages=')
+                        }
+                        url.concat(this.props.filterData.checkedLanguages[this.props.filterData.checkedLanguages.length - 1]);
+                    }
+                    url.concat(`&Count=${10}&Skip=${0}`)
+                    //Tags=string&Languages=1&Languages=2&Count=30`
+                } else {
+                    url = `https://localhost:44384/Post?Count=${10}&Skip=${0}`;
+                }
+            } else if (prevProps.searchTerm !== this.props.searchTerm && prevProps.filterData !== this.props.filterData) {
+                //https://localhost:44384/Post?From=2021-08-10&To=2021-08-11&Tags=string&Tags=string1&Languages=1&Languages=2&SearchingText=search&Count=30
+                if (this.props.filterData !== [] && this.props.filterData !== null && this.props.filterData !== undefined) {
+                    url = `https://localhost:44384/Post?From=${(this.props.filterData.dates[0]).toISOString()}` +
+                        `&To=${(this.props.filterData.dates[1]).toISOString()}&Tags=`;
+                    if(this.props.filterData.tags.length > 0) {
+                        for (let i = 0; i < this.props.filterData.tags.length - 1; ++i) {
+                            url.concat(this.props.filterData.tags[i], '&Tags=')
+                        }
+                        url.concat(this.props.filterData.tags[this.props.filterData.tags.length - 1]);
+                    }
+                    url.concat('&Languages=');
+                    if(this.props.filterData.checkedLanguages.length > 0) {
+                        for (let i = 0; i < this.props.filterData.checkedLanguages.length - 1; ++i) {
+                            url.concat(this.props.filterData.checkedLanguages[i], '&Languages=')
+                        }
+                        url.concat(this.props.filterData.checkedLanguages[this.props.filterData.checkedLanguages.length - 1]);
+                    }
+                    url.concat('&');
+                } else {
+                    url = `https://localhost:44384/Post?`;
+                }
+
+                if(this.props.searchTerm !== "" && this.props.searchTerm !== null && this.props.searchTerm !== undefined){
+                    url.concat(`SearchingText=${this.props.searchTerm}&Count=${10}&Skip=${0}`)
+                } else {
+                    url.concat(`Count=${10}&Skip=${0}`);
+                }
+
+
+                /!*axios.get(url)
+                    .then(response => {
+                        this.setState({currentPosts: response.data});
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    });*!/
+            }
+
+            console.log('check url: ' + url)
+            axios.get(url)
+                .then(response => {
+                    this.setState({currentPosts: response.data});
+                })
+                .catch(error => {
+                    console.log(error)
+                });*/
         }
     }
 
@@ -148,6 +219,7 @@ class FeedPanel extends React.Component {
                     /*posts ?
                     posts.length ? posts.map(post => <Post title="{post.tittle}" />) : null :
                         null*/
+                    currentPosts ?
                     currentPosts.length ?
                         currentPosts/*.filter((value) => {
                             if(this.props.searchTerm === '') {
@@ -163,7 +235,7 @@ class FeedPanel extends React.Component {
                             code={post.snippetCode}
                             language={post.language.name}
                         />/*<div key={post.id}>{post.tittle}</div>*/) :
-                        null
+                        null : null
                 }
 
                 {

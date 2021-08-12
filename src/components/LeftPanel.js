@@ -12,8 +12,8 @@ import {
 } from 'antd';
 //import PopularTags from "./PopularTags";
 
-const { RangePicker } = DatePicker;
-const { Option } = Select;
+const {RangePicker} = DatePicker;
+const {Option} = Select;
 const children = [];
 for (let i = 10; i < 36; i++) {
     children.push(<Option key={i.toString(36) + i} value="">{i.toString(36) + i}</Option>);
@@ -28,11 +28,13 @@ class LeftPanel extends React.Component {
             dates: [],
             hackValue: null,
             value: null,
-            tagInputSize: 'default'
+            tagInputSize: 'default',
+            tags: [],
+            checkedLanguages: []
         };
     }
 
-    onFormLayoutChange = ({ size }) => {
+    onFormLayoutChange = ({size}) => {
         this.setState({componentSize: size});
     };
 
@@ -60,40 +62,61 @@ class LeftPanel extends React.Component {
 
     handleChange = (value) => {
         console.log(`Selected: ${value}`);
+        this.setState({tags: [...this.state.tags, value]})
     }
 
     onChange = (checkedValues) => {
         console.log('checked = ', checkedValues);
+        this.setState({
+            checkedLanguages: [...this.state.checkedLanguages, checkedValues].reverse().
+            filter(function (e, i, arr) {
+                return arr.indexOf(e, i + 1) === -1;
+            }).reverse()
+        })
+    }
+
+    submitHandler = (event) => {
+        event.preventDefault();
+        const data = {
+            dates: this.state.dates,
+            tags: this.state.tags,
+            checkedLanguages: this.state.checkedLanguages
+        }
+        this.props.sendFilterData(data);
     }
 
     render() {
         return (
             <div className="left-panel">
                 {/*<PopularTags/>*/}
-                <Form style={{marginTop: '7%', paddingLeft:'10%'}}
-                    labelCol={{
-                        span: 6,
-                    }}
-                    wrapperCol={{
-                        span: 20,
-                    }}
-                    layout="horizontal"
-                    initialValues={{
-                        size: this.state.componentSize,
-                    }}
-                    onValuesChange={this.onFormLayoutChange}
-                    size={this.state.componentSize}
+                <Form style={{marginTop: '7%', paddingLeft: '10%'}}
+                      labelCol={{
+                          span: 6,
+                      }}
+                      wrapperCol={{
+                          span: 20,
+                      }}
+                      layout="horizontal"
+                      initialValues={{
+                          size: this.state.componentSize,
+                      }}
+                      onValuesChange={this.onFormLayoutChange}
+                      size={this.state.componentSize}
+                      onSubmitCapture={this.submitHandler}
                 >
                     <h3>Filter</h3>
                     <div style={{marginBottom: '1%'}}>Date range:</div>
                     <Form.Item style={{marginBottom: '2%'}}>
                         <RangePicker
                             value={this.state.hackValue || this.state.value}
-                            disabledDate={this.disabledDate}
-                            onCalendarChange={val => this.setState({dates: val})}
+                            /*disabledDate={this.disabledDate}*/
+                            onCalendarChange={
+                                val => this.setState({dates: val})
+                            }
                             onChange={val => this.setState({value: val})}
-                            onOpenChange={this.onOpenChange} />
+                            onOpenChange={this.onOpenChange}/>
                     </Form.Item>
+
                     <div style={{marginBottom: '1%'}}>Tags:</div>
                     <Form.Item style={{marginBottom: '2%'}}>
                         <Select
@@ -101,41 +124,41 @@ class LeftPanel extends React.Component {
                             size={this.state.tagInputSize}
                             placeholder="Please select"
                             onChange={this.handleChange}
-                            style={{ width: '100%' }} />
+                            style={{width: '100%'}}/>
                     </Form.Item>
                     <div style={{marginBottom: '1%'}}>Languages:</div>
                     <Form.Item>
-                        <Checkbox.Group style={{ width: '100%' }} onChange={this.onChange}>
+                        <Checkbox.Group style={{width: '100%'}} onChange={this.onChange}>
                             <Row>
                                 <Col id="1" span={10}>
-                                    <Checkbox value="C++">C++</Checkbox>
+                                    <Checkbox value="1">C++</Checkbox>
                                 </Col>
                                 <Col id="2" span={10}>
-                                    <Checkbox value="Java">Java</Checkbox>
+                                    <Checkbox value="2">Java</Checkbox>
                                 </Col>
                                 <Col id="3" span={10}>
-                                    <Checkbox value="Python">Python</Checkbox>
+                                    <Checkbox value="3">Python</Checkbox>
                                 </Col>
                                 <Col id="4" span={10}>
-                                    <Checkbox value="JavaScript">JavaScript</Checkbox>
+                                    <Checkbox value="4">JavaScript</Checkbox>
                                 </Col>
                                 <Col id="5" span={10}>
-                                    <Checkbox value="C#">C#</Checkbox>
+                                    <Checkbox value="5">C#</Checkbox>
                                 </Col>
                                 <Col id="6" span={10}>
-                                    <Checkbox value="TypeScript">TypeScript</Checkbox>
+                                    <Checkbox value="6">TypeScript</Checkbox>
                                 </Col>
                                 <Col id="7" span={10}>
-                                    <Checkbox value="SQL">SQL</Checkbox>
+                                    <Checkbox value="7">SQL</Checkbox>
                                 </Col>
                                 <Col id="8" span={10}>
-                                    <Checkbox value="C">C</Checkbox>
+                                    <Checkbox value="8">C</Checkbox>
                                 </Col>
                                 <Col id="9" span={10}>
-                                    <Checkbox value="Ruby">Ruby</Checkbox>
+                                    <Checkbox value="9">Ruby</Checkbox>
                                 </Col>
                                 <Col id="10" span={10}>
-                                    <Checkbox value="Haskell">Haskell</Checkbox>
+                                    <Checkbox value="10">Haskell</Checkbox>
                                 </Col>
                             </Row>
                         </Checkbox.Group>
