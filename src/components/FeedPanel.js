@@ -42,7 +42,17 @@ class FeedPanel extends React.Component {
     componentDidMount() {
         const defSkip = 0;
         const defCount = 10;
+
+        /*let url;
+        console.log("search req check mount: " + this.props.searchTerm);
+        if (this.props.searchTerm !== "" && this.props.searchTerm !== null && this.props.searchTerm !== undefined) {
+            url = `https://localhost:44384/Post?SearchingText=${this.props.searchTerm}&Count=${defCount}&Skip=${defSkip}`;
+        } else {
+            url = `https://localhost:44384/Post?Count=${defCount}&Skip=${defSkip}`;
+        }*/
+
         axios.get(`https://localhost:44384/Post?Count=${defCount/*this.state.count*/}&Skip=${defSkip/*this.state.skip*/}`)
+        //axios.get(url)
             .then(response => {
                 console.log(response)
                 this.setState({
@@ -74,6 +84,27 @@ class FeedPanel extends React.Component {
             .catch(error => {
                 console.log(error)
             })*/
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.searchTerm !== this.props.searchTerm) {
+            let url;
+
+            console.log("search req check: " + this.props.searchTerm);
+            if (this.props.searchTerm !== "" && this.props.searchTerm !== null && this.props.searchTerm !== undefined) {
+                url = `https://localhost:44384/Post?SearchingText=${this.props.searchTerm}&Count=${10}&Skip=${0}`;
+            } else {
+                url = `https://localhost:44384/Post?Count=${10}&Skip=${0}`;
+            }
+
+            axios.get(url)
+                .then(response => {
+                    this.setState({currentPosts: response.data});
+                })
+                .catch(error => {
+                    console.log(error)
+                });
+        }
     }
 
     onPageChanged = (data) => {
