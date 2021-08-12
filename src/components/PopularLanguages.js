@@ -22,13 +22,13 @@ class PopularLanguages extends React.Component {
                     <a href="" className="popular-language">C++</a>
                 </div>
                 <div className="popular-language-block">
-                    <a href="" className="popular-language">PHP</a>
+                    <a href="" className="popular-language">SQL</a>
                 </div>
                 <div className="popular-language-block">
                     <a href="" className="popular-language">TypeScript</a>
                 </div>
                 <div className="popular-language-block">
-                    <a href="" className="popular-language">SQL</a>
+                    <a href="" className="popular-language">C</a>
                 </div>
                 <div className="popular-language-block">
                     <a href="" className="popular-language">Ruby</a>
