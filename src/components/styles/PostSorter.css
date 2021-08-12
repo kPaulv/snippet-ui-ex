@@ -3,7 +3,10 @@
     margin-top: 5%;
 }
 .sort {
-    margin-top: 3%;
+    margin-top: 2%;
     height: 25px;
     width: 70%;
+}
+.order-buttons {
+    margin-top: 3%;
 }
