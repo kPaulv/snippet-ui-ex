@@ -51,8 +51,8 @@ class Post extends React.Component {
                                     {/*Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                                     sed do eiusmod tempor incididunt ut labore et dolore magna
                                     aliqua.<br/>#algorithms*/}
-                                    {/*{this.props.text}*/}
-                                    {this.appendTags(this.props.text, this.props.tags)}
+                                    {this.props.text}
+                                    {/*{this.appendTags(this.props.text, this.props.tags)}*/}
                                 </p>
                                 <div className="code-snippet">
                                     {/*If i is divisible by 3<br/>

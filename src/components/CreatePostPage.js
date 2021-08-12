@@ -43,6 +43,11 @@ export default class CreatePostPage extends React.Component {
         }
     }
 
+    descriptionChangeHandler = (event) => {
+        this.setState({[event.target.name]: event.target.value})
+        this.setState({tags: event.target.value.match(/#[a-z0-9_]+/g)})
+    }
+
     changeHandler = (event) => {
         this.setState({[event.target.name]: event.target.value})
     }
@@ -134,7 +139,7 @@ export default class CreatePostPage extends React.Component {
                         ]}
                     >
                         <Input.TextArea name="description" value={description}
-                                        onChange={this.changeHandler}/>
+                                        onChange={this.descriptionChangeHandler}/>
                     </Form.Item>
 
                     <Form.Item name={"snippetCode"} label="Code Snippet">
