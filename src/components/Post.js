@@ -86,7 +86,7 @@ class Post extends React.Component {
                                     {this.props.text}
                                     {/*{this.appendTags(this.props.text, this.props.tags)}*/}
                                 </p>
-                                <div className="code-snippet">
+                                <pre className="code-snippet">
                                     {/*If i is divisible by 3<br/>
                                     print "Fizz"<br/>
                                     set print_number to false<br/>
@@ -94,7 +94,7 @@ class Post extends React.Component {
                                     print "Buzz"<br/>
                                     set print_number to false*/}
                                     {this.props.code}
-                                </div>
+                                </pre>
                             </div>
                             <div className="post-footer">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
