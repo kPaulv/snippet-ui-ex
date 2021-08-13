@@ -10,6 +10,7 @@ import {
     Row,
     Col
 } from 'antd';
+import axios from "axios";
 //import PopularTags from "./PopularTags";
 
 const {RangePicker} = DatePicker;
@@ -30,7 +31,8 @@ class LeftPanel extends React.Component {
             value: null,
             tagInputSize: 'default',
             tags: [],
-            checkedLanguages: []
+            checkedLanguages: [],
+            languages: []
         };
     }
 
@@ -68,8 +70,7 @@ class LeftPanel extends React.Component {
     onChange = (checkedValues) => {
         console.log('checked = ', checkedValues);
         this.setState({
-            checkedLanguages: [...this.state.checkedLanguages, checkedValues].reverse().
-            filter(function (e, i, arr) {
+            checkedLanguages: [...this.state.checkedLanguages, checkedValues].reverse().filter(function (e, i, arr) {
                 return arr.indexOf(e, i + 1) === -1;
             }).reverse()
         })
@@ -85,7 +86,20 @@ class LeftPanel extends React.Component {
         this.props.sendFilterData(data);
     }
 
+    componentDidMount() {
+        axios.get('https://localhost:44384/Language?count=2147483647')
+            .then(response => {
+                console.log(response);
+                this.setState({languages: response.data});
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     render() {
+        const {languages} = this.state
+
         return (
             <div className="left-panel">
                 {/*<PopularTags/>*/}
@@ -130,7 +144,19 @@ class LeftPanel extends React.Component {
                     <Form.Item>
                         <Checkbox.Group style={{width: '100%'}} onChange={this.onChange}>
                             <Row>
-                                <Col id="1" span={10}>
+                                {
+                                    languages.length ?
+                                        languages.map(language =>
+                                                <Col id={language.id} span={10}>
+                                                    <Checkbox value={language.id}>{language.name}</Checkbox>
+                                                </Col>
+                                            /*<Option key={language.id} value={language.id}>
+                                                {language.name}
+                                            </Option>*/
+                                        ) :
+                                        null
+                                }
+                                {/*<Col id="1" span={10}>
                                     <Checkbox value="1">C++</Checkbox>
                                 </Col>
                                 <Col id="2" span={10}>
@@ -159,7 +185,7 @@ class LeftPanel extends React.Component {
                                 </Col>
                                 <Col id="10" span={10}>
                                     <Checkbox value="10">Haskell</Checkbox>
-                                </Col>
+                                </Col>*/}
                             </Row>
                         </Checkbox.Group>
                     </Form.Item>
